@@ -1,4 +1,6 @@
-import {Header} from './Section.styled';
+import PropTypes from 'prop-types';
+
+import { Header } from './Section.styled';
 
 const Section = ({ title, children }) => {
     return (
@@ -10,3 +12,8 @@ const Section = ({ title, children }) => {
 }
 
 export default Section;
+
+Header.propTypes = {
+    title: PropTypes.string,
+    children: PropTypes.any.isRequired,
+}

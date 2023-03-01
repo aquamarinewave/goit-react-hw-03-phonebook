@@ -1,4 +1,5 @@
-import {List, ListItem, ContsctBtn, PhoneNumber} from './ContactList.styled';
+import PropTypes from 'prop-types';
+import { List, ListItem, ContsctBtn, PhoneNumber } from './ContactList.styled';
 
 const ContactList = ({ options, onDelete } ) => {
     return (
@@ -14,3 +15,8 @@ const ContactList = ({ options, onDelete } ) => {
 }
 
 export default ContactList; 
+
+ContactList.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.shape).isRequired,
+    onDelete: PropTypes.func.isRequired,
+}

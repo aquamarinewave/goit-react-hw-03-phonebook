@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { FormContainer, Label, Input, Button } from './ContactForm.styled';
 import { nanoid } from 'nanoid';
@@ -57,3 +58,8 @@ const Phonebook = ({addNewContact}) => {
 }
 
 export default Phonebook;
+
+
+Phonebook.propTypes = {
+  addNewContact: PropTypes.func.isRequired,
+}

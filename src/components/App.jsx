@@ -36,6 +36,20 @@ class App extends Component {
     this.setState({filter: event.currentTarget.value})
   }
 
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const localContacts = JSON.parse(contacts);
+    this.setState({
+      contacts: localContacts,
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   render() {
 
     const normalizedFilter = this.state.filter.toLowerCase();
@@ -46,8 +60,8 @@ class App extends Component {
       <Container>
         <Section title="Phonebook">
           <ContactForm addNewContact={this.formSubmitHandler} />
+          <Filter value={this.state.filter} onChange={this.changeFilter} /> 
         </Section>
-        <Filter value={this.state.filter} onChange={this.changeFilter} /> 
         <Section title="Contacts">
           <ContactList options={visibleContacts} onDelete={this.deleteRecipe} />
         </Section>
